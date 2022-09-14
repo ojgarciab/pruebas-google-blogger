@@ -22,7 +22,7 @@ if (document.location.hash !== "") {
 }
 
 console.log("access_token", parametros.access_token);
-if (parametros.access_token === undefined) {
+if (parametros === null || parametros.access_token === undefined) {
     addEventListener('DOMContentLoaded', (event) => {
         /* Generamos un valor aleatorio de estado que deberá ser devuelto igual */
         const state = Math.random(0).toString(36).substr(2);
