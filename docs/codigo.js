@@ -8,14 +8,15 @@ let parametros = JSON.parse(sessionStorage.getItem('parametros'));
 
 if (document.location.hash !== "") {
     /* Obtenemos todos los parámetros recibidos en el flujo OAuth */
-    const parametros = Object.fromEntries(
+    const nuevos_parametros = Object.fromEntries(
         new URLSearchParams(document.location.hash.substr(1))
     );
-    console.log("parametros", parametros);
+    console.log("nuevos_parametros", nuevos_parametros);
     /* Actualizamos el testigo de sesión */
-    if (parametros.hasOwnProperty("access_token") === true) {
-        console.log("state", sessionStorage.getItem('state'), parametros.state)
-        sessionStorage.setItem('parametros', JSON.stringify(parametros));
+    if (nuevos_parametros.hasOwnProperty("access_token") === true) {
+        console.log("state", sessionStorage.getItem('state'), nuevos_parametros.state)
+        sessionStorage.setItem('parametros', JSON.stringify(nuevos_parametros));
+        parametros = nuevos_parametros;
         boton_login.style.display = "none";
     }
 }
