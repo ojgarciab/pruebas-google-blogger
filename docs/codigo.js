@@ -25,21 +25,20 @@ if (document.location.hash !== "") {
 
 console.log("access_token", parametros?.access_token);
 if (parametros === null || parametros.access_token === undefined) {
-    addEventListener('DOMContentLoaded', (event) => {
-        /* Generamos un valor aleatorio de estado que deberá ser devuelto igual */
-        const state = Math.random(0).toString(36).substr(2);
-        sessionStorage.setItem('state', state);
-        boton_login.addEventListener('click', () => {
-            let url = new URL(authUrl);
-            url.searchParams.append("client_id", clientId);
-            url.searchParams.append("redirect_uri", redirect);
-            url.searchParams.append("response_type", "token");
-            url.searchParams.append("scope", scope);
-            url.searchParams.append("state", state);
-            /* Redirigimos a la URL de autenticación del API */
-            console.log("url", url);
-            window.location = url;
-        });
+    boton_login.style.display = "none";
+    /* Generamos un valor aleatorio de estado que deberá ser devuelto igual */
+    const state = Math.random(0).toString(36).substr(2);
+    sessionStorage.setItem('state', state);
+    boton_login.addEventListener('click', () => {
+        let url = new URL(authUrl);
+        url.searchParams.append("client_id", clientId);
+        url.searchParams.append("redirect_uri", redirect);
+        url.searchParams.append("response_type", "token");
+        url.searchParams.append("scope", scope);
+        url.searchParams.append("state", state);
+        /* Redirigimos a la URL de autenticación del API */
+        console.log("url", url);
+        window.location = url;
     });
 } else {
     fetch(
