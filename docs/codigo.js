@@ -9,7 +9,7 @@ let parametros = JSON.parse(sessionStorage.getItem('parametros'));
 if (document.location.hash !== "") {
     /* Obtenemos todos los parámetros recibidos en el flujo OAuth */
     const parametros = Object.fromEntries(
-        URLSearchParams(document.location.hash.substr(1))
+        new URLSearchParams(document.location.hash.substr(1))
     );
     console.log("parametros", parametros);
     /* Actualizamos el testigo de sesión */
