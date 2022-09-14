@@ -18,7 +18,8 @@ if (document.location.hash !== "") {
         sessionStorage.setItem('parametros', JSON.stringify(nuevos_parametros));
         parametros = nuevos_parametros;
         boton_login.style.display = "none";
-        document.location.hash = "";
+        /* Quitamos el hash del historial de navegación */
+        location.replace(location.href.split('#')[0]);
     }
 }
 
