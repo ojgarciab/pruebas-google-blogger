@@ -14,7 +14,7 @@ if (document.location.hash !== "") {
     console.log("parametros", parametros);
     /* Actualizamos el testigo de sesión */
     if (parametros.hasOwnProperty("access_token") === true) {
-        console.log("state", sessionStorage.setItem('state'), parametros.state)
+        console.log("state", sessionStorage.getItem('state'), parametros.state)
         sessionStorage.setItem('parametros', JSON.stringify(parametros));
         boton_login.style.display = "none";
     }
