@@ -1,6 +1,7 @@
-const clientId = '507875559835-l3sdlaagl3fedbqvk22jt6ck2aeiaq3m.apps.googleusercontent.com';
-const redirect = 'https://ojgarciab.github.io/pruebas-google-blogger/';
-const scope = 'https://www.googleapis.com/auth/blogger';
+const authUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+const clientId = "507875559835-l3sdlaagl3fedbqvk22jt6ck2aeiaq3m.apps.googleusercontent.com";
+const redirect = "https://ojgarciab.github.io/pruebas-google-blogger/";
+const scope = "https://www.googleapis.com/auth/blogger";
 const aleatorio = Math.random(0).toString(36).substr(2);
 
 /* null si no tenemos aún el testigo almacenado */
@@ -20,12 +21,16 @@ if (document.location.hash !== "") {
 console.log("access_token", access_token);
 if (access_token === null) {
     addEventListener('DOMContentLoaded', (event) => {
-        boton_login.addEventListener('click', (event) => {
-            win = window.open(
-                `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirect}&response_type=token&scope=${scope}&state=${aleatorio}`,
-                'googleLogin',
-                "location=yes,height=620,width=520,scrollbars=no,resizable=no,status=yes"
-            );
+        boton_login.addEventListener('click', () => {
+            let url = new URL(authUrl);
+            url.searchParams.append("client_id", clientId);
+            url.searchParams.append("redirect_uri", clientId);
+            url.searchParams.append("response_type", "token");
+            url.searchParams.append("scope", scope);
+            url.searchParams.append("state", aleatorio);
+            /* Redirigimos a la URL de autenticación del API */
+            console.log("url", url);
+            windows.location = url;
         });
     });
 }
