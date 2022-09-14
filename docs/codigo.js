@@ -18,6 +18,7 @@ if (document.location.hash !== "") {
         sessionStorage.setItem('parametros', JSON.stringify(nuevos_parametros));
         parametros = nuevos_parametros;
         boton_login.style.display = "none";
+        document.location.hash = "";
     }
 }
 
@@ -41,7 +42,7 @@ if (parametros === null || parametros.access_token === undefined) {
     });
 } else {
     fetch(
-        "https://www.googleapis.com/blogger/v3/users/userId/blogs",
+        "https://www.googleapis.com/blogger/v3/users/self/blogs",
         {
             "headers": {
                 "Authorization": "Bearer " + parametros.access_token,
