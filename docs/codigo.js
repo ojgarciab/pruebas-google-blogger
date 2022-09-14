@@ -14,7 +14,7 @@ if (document.location.hash !== "") {
     console.log("parametros", parametros);
     /* Actualizamos el testigo de sesión */
     if (parametros.hasOwnProperty("access_token") === true) {
-        console.log("state", sessionStorage.setItem('aleatorio'), parametros.state)
+        console.log("state", sessionStorage.setItem('state'), parametros.state)
         sessionStorage.setItem('parametros', JSON.stringify(parametros));
         boton_login.style.display = "none";
     }
@@ -23,15 +23,16 @@ if (document.location.hash !== "") {
 console.log("access_token", parametros.access_token);
 if (parametros.access_token === undefined) {
     addEventListener('DOMContentLoaded', (event) => {
-        /* Generamos un valor aleatorio que deberá ser devuelto igual */
-        sessionStorage.setItem('aleatorio', Math.random(0).toString(36).substr(2));
+        /* Generamos un valor aleatorio de estado que deberá ser devuelto igual */
+        const state = Math.random(0).toString(36).substr(2);
+        sessionStorage.setItem('state', state);
         boton_login.addEventListener('click', () => {
             let url = new URL(authUrl);
             url.searchParams.append("client_id", clientId);
             url.searchParams.append("redirect_uri", redirect);
             url.searchParams.append("response_type", "token");
             url.searchParams.append("scope", scope);
-            url.searchParams.append("state", aleatorio);
+            url.searchParams.append("state", state);
             /* Redirigimos a la URL de autenticación del API */
             console.log("url", url);
             window.location = url;
