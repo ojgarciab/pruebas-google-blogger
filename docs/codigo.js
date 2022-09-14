@@ -24,7 +24,7 @@ if (access_token === null) {
         boton_login.addEventListener('click', () => {
             let url = new URL(authUrl);
             url.searchParams.append("client_id", clientId);
-            url.searchParams.append("redirect_uri", clientId);
+            url.searchParams.append("redirect_uri", redirect);
             url.searchParams.append("response_type", "token");
             url.searchParams.append("scope", scope);
             url.searchParams.append("state", aleatorio);
