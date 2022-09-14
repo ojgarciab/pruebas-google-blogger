@@ -21,7 +21,7 @@ if (document.location.hash !== "") {
     }
 }
 
-console.log("access_token", parametros.access_token);
+console.log("access_token", parametros?.access_token);
 if (parametros === null || parametros.access_token === undefined) {
     addEventListener('DOMContentLoaded', (event) => {
         /* Generamos un valor aleatorio de estado que deberá ser devuelto igual */
