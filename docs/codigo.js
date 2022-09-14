@@ -39,4 +39,16 @@ if (parametros.access_token === undefined) {
             window.location = url;
         });
     });
+} else {
+    fetch(
+        "https://www.googleapis.com/blogger/v3/users/userId/blogs",
+        {
+            "headers": {
+                "Authorization": parametros.access_token,
+            },
+        "method": "GET",
+        }
+    )
+    .then(respuesta => respuesta.json())
+    .then(datos => console.log(datos));
 }
