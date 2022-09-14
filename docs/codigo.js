@@ -30,7 +30,7 @@ if (access_token === null) {
             url.searchParams.append("state", aleatorio);
             /* Redirigimos a la URL de autenticación del API */
             console.log("url", url);
-            windows.location = url;
+            window.location = url;
         });
     });
 }
