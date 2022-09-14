@@ -44,7 +44,7 @@ if (parametros.access_token === undefined) {
         "https://www.googleapis.com/blogger/v3/users/userId/blogs",
         {
             "headers": {
-                "Authorization": parametros.access_token,
+                "Authorization": "Bearer " + parametros.access_token,
             },
         "method": "GET",
         }
